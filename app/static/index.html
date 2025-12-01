@@ -40,7 +40,8 @@
 
       const base = location.origin.replace(/\/$/,'');
       const wsProto = base.startsWith('https') ? 'wss' : 'ws';
-      const ws = new WebSocket(wsProto + '://' + location.host + '/ws');
+      const ws = new WebSocket(`${location.origin.replace(/^http/, "ws")}/ws`);
+
 
       ws.onopen = () => {
         status.innerText = 'Conectado';
